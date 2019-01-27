@@ -1,5 +1,7 @@
 package sr.unasat.jpa.app;
 
+import sr.unasat.jpa.builders.Builder;
+import sr.unasat.jpa.builders.ReservationBuilder;
 import sr.unasat.jpa.config.JPAConfiguration;
 import sr.unasat.jpa.dao.BranchDAO;
 import sr.unasat.jpa.dao.CustomerDAO;
@@ -44,16 +46,18 @@ public class Application {
         Scanner customerCodeRead = new Scanner(System.in);
         int customerCode = customerCodeRead.nextInt();
 
-        Reservation reservation = new Reservation();
+        ReservationBuilder reservationBuilder = new ReservationBuilder();
         Random rand = new Random();
-        reservation.setReservationID(rand.nextInt(100000));
-        reservation.setCustomerID(customerCode);
-        reservation.setDateFrom(begindatum);
-        reservation.setDateTo(einddatum);
-        reservation.setTotalPrice(100);
-        reservation.setRoomID(room);
+        reservationBuilder.setReservationId(rand.nextInt(100000));
+        reservationBuilder.setCustomerId(customerCode);
+        reservationBuilder.setDateFrom(begindatum);
+        reservationBuilder.setDateTo(einddatum);
+        reservationBuilder.setTotalPrice(100);
+        reservationBuilder.setRoomId(room);
 
-        reservationDAO.insert(reservation);
+        Reservation reservation1 = reservationBuilder.getResult();
+
+        reservationDAO.insert(reservation1);
 
         System.out.println("Uw registratie is opgeslagen");
 

@@ -25,51 +25,36 @@ public class Reservation {
     @Column(name = "room_id")
     private int roomID;
 
-    public int getReservationID() {
-        return reservationID;
+    public Reservation(int reservationID, int customerID, String dateFrom, String dateTo, double totalPrice, int roomID) {
+        this.reservationID = reservationID;
+        this.customerID = customerID;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+        this.totalPrice = totalPrice;
+        this.roomID = roomID;
     }
 
-    public void setReservationID(int reservationID) {
-        this.reservationID = reservationID;
+    public int getReservationID() {
+        return reservationID;
     }
 
     public int getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
-    }
-
     public String getDateFrom() {
         return dateFrom;
-    }
-
-    public void setDateFrom(String dateFrom) {
-        this.dateFrom = dateFrom;
     }
 
     public String getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(String dateTo) {
-        this.dateTo = dateTo;
-    }
-
     public double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
     public int getRoomID() {
         return roomID;
-    }
-
-    public void setRoomID(int roomID) {
-        this.roomID = roomID;
     }
 }
