@@ -10,6 +10,9 @@ import sr.unasat.jpa.dao.RoomDAO;
 import sr.unasat.jpa.entities.Branch;
 import sr.unasat.jpa.entities.Reservation;
 import sr.unasat.jpa.entities.Room;
+import sr.unasat.jpa.payments.MasterCard;
+import sr.unasat.jpa.payments.PayPal;
+import sr.unasat.jpa.payments.Payment;
 
 import java.util.List;
 import java.util.Random;
@@ -46,6 +49,7 @@ public class Application {
         Scanner customerCodeRead = new Scanner(System.in);
         int customerCode = customerCodeRead.nextInt();
 
+        // Builder Pattern for building the registration
         ReservationBuilder reservationBuilder = new ReservationBuilder();
         Random rand = new Random();
         reservationBuilder.setReservationId(rand.nextInt(100000));
@@ -56,27 +60,25 @@ public class Application {
         reservationBuilder.setRoomId(room);
 
         Reservation reservation1 = reservationBuilder.getResult();
-
         reservationDAO.insert(reservation1);
 
+        // Template pattern for Payment
+        Payment payment = null;
+        System.out.println("\nChoose your Payment method.\n" +
+                "1 - PayPal\n" +
+                "2 - MasterCard");
+        Scanner chooseRead = new Scanner(System.in);
+        int choice = chooseRead.nextInt();
+
+        if(choice == 1){
+            payment = new PayPal();
+        } else if(choice == 2){
+            payment = new MasterCard();
+        }
+
+        payment.pay();
+
         System.out.println("Uw registratie is opgeslagen");
-
-        // Reservation reservation = new Reservation();
-
-        //        Systeem controleert als de saldo hoger is dan het totaal bedrag
-        // TODO: Er wordt op dit moment niet in de database bijgehouden wat de saldo is van de gebruiker
-
-        //        Borg wordt afgetrokken van de saldo van de gebruiker (voorschot)
-
-        //        Formulier wordt opgeslagen door het systeem
-
-        
-
-
-        //        Conformatie wordt gestuurd naar de gebruiker dat de reservering is geplaatst
-
-
-        // TODO: https://refactoring.guru/design-patterns/builder
 
     }
 }
