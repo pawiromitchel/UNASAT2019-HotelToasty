@@ -9,6 +9,7 @@ import java.util.Set;
 public class RoomType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "room_type_id")
     private int roomTypeID;
 
     @Column(name = "name")

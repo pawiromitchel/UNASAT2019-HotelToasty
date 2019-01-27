@@ -17,14 +17,15 @@ public class Branch {
     private String name;
 
     @OneToOne
-    @JoinColumn(name = "address_id")
+    @JoinColumn(name = "adress_id")
     private Adres adres;
 
-    @OneToOne(mappedBy = "branch")
-    private User user;
+//    @OneToOne(mappedBy = "branch")
+//    private User user;
 
-    @OneToMany(mappedBy = "branch")
-    private Set<Reservation> reservations = new HashSet<Reservation>();
+    @ManyToMany
+    @JoinTable(name = "branch_room", joinColumns = @JoinColumn(name = "branch_id"), inverseJoinColumns = @JoinColumn(name = "room_id"))
+    private Set<Room> rooms = new HashSet<Room>();
 
     public int getBranchID() {
         return branchID;
@@ -48,5 +49,24 @@ public class Branch {
 
     public void setAdres(Adres adres) {
         this.adres = adres;
+    }
+
+    public Set<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Set<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    @Override
+    public String toString() {
+//        return "Branch{" +
+//                "branchID=" + branchID +
+//                ", name='" + name + '\'' +
+//                ", adres=" + adres +
+//                ", rooms=" + rooms +
+//                '}';
+        return name + "\n" + "rooms: " + rooms;
     }
 }

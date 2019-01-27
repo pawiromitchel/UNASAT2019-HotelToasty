@@ -14,9 +14,9 @@ public class User {
     @JoinColumn(name="role_id")
     private Role role;
 
-    @OneToOne
-    @JoinColumn(name = "branch_id")
-    private Branch branch;
+//    @OneToOne
+//    @JoinColumn(name = "branch_id")
+//    private Branch branch;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -89,7 +89,6 @@ public class User {
         this.email = email;
     }
 
-
     @Override
     public String toString() {
         return "User{" +
@@ -99,7 +98,7 @@ public class User {
                 ", last_name='" + last_name + '\'' +
                 ", idNumber='" + idNumber + '\'' +
                 ", mobile='" + mobile + '\'' +
-                ", email='" + email +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

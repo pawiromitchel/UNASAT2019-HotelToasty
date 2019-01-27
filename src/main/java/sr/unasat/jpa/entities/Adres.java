@@ -3,11 +3,11 @@ package sr.unasat.jpa.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "addresses")
+@Table(name = "adresses")
 public class Adres {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "address_id")
+    @Column(name = "adress_id")
     private int addressID;
 
     @Column(name = "name")
@@ -38,5 +38,10 @@ public class Adres {
 
     public void setBranch(Branch branch) {
         this.branch = branch;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

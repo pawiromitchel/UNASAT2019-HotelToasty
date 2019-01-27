@@ -12,9 +12,6 @@ public class Customer {
     @Column(name = "customer_id")
     private int customerID;
 
-    @OneToMany(mappedBy = "customer")
-    private Set<Reservation> reservations = new HashSet<Reservation>();
-
     @Column(name = "first_name")
     private String firstName;
 
@@ -26,4 +23,44 @@ public class Customer {
 
     @Column(name = "mobile")
     private String mobile;
+
+    public int getCustomerID() {
+        return customerID;
+    }
+
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 }
