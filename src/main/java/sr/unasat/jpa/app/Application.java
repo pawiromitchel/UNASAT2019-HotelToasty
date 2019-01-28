@@ -1,13 +1,8 @@
 package sr.unasat.jpa.app;
 
-import sr.unasat.jpa.builders.Builder;
 import sr.unasat.jpa.builders.ReservationBuilder;
 import sr.unasat.jpa.config.JPAConfiguration;
-import sr.unasat.jpa.dao.BranchDAO;
-import sr.unasat.jpa.dao.CustomerDAO;
-import sr.unasat.jpa.dao.ReservationDAO;
-import sr.unasat.jpa.dao.RoomDAO;
-import sr.unasat.jpa.entities.Branch;
+import sr.unasat.jpa.dao.*;
 import sr.unasat.jpa.entities.Reservation;
 import sr.unasat.jpa.entities.Room;
 import sr.unasat.jpa.payments.MasterCard;
@@ -20,6 +15,46 @@ import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
+        // makeReservation();
+
+        // searchOneReservation();
+
+//        sr.unasat.jpa.additionals.Room basicRoom = new Wifi(new Jacuzzi(new BasicRoom()));
+//        System.out.println(basicRoom.getName());
+//        System.out.println(basicRoom.getCosts());
+
+        // Generate reports
+        // totalIncome();
+        // incomePerCustomer();
+        // generateReportCountReservationPerRoom();
+    }
+
+    public static void totalIncome(){
+        ReportDAO reportDAO = new ReportDAO(JPAConfiguration.getEntityManager());
+        System.out.println(reportDAO.generateReportTotalIncome());
+    }
+
+    public static void incomePerCustomer(){
+        ReportDAO reportDAO = new ReportDAO(JPAConfiguration.getEntityManager());
+        System.out.println(reportDAO.generateReportIncomePerCustomer());
+    }
+
+    public static void generateReportCountReservationPerRoom(){
+        ReportDAO reportDAO = new ReportDAO(JPAConfiguration.getEntityManager());
+        System.out.println(reportDAO.generateReportCountReservationPerRoom());
+    }
+
+    public static void searchOneReservation(){
+        ReservationDAO reservationDAO = new ReservationDAO(JPAConfiguration.getEntityManager());
+
+        System.out.println("Wat is de code die je wilt zoeken?");
+        Scanner codeInput = new Scanner(System.in);
+        int code = codeInput.nextInt();
+
+        System.out.println(reservationDAO.searchOne(code));
+    }
+
+    public static void makeReservation(){
 
         // Setup
         RoomDAO roomDAO = new RoomDAO(JPAConfiguration.getEntityManager());

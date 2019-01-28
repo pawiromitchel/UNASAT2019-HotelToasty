@@ -25,6 +25,8 @@ public class Reservation {
     @Column(name = "room_id")
     private int roomID;
 
+    public  Reservation(){}
+
     public Reservation(int reservationID, int customerID, String dateFrom, String dateTo, double totalPrice, int roomID) {
         this.reservationID = reservationID;
         this.customerID = customerID;
@@ -56,5 +58,17 @@ public class Reservation {
 
     public int getRoomID() {
         return roomID;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "reservationID=" + reservationID +
+                ", customerID=" + customerID +
+                ", dateFrom='" + dateFrom + '\'' +
+                ", dateTo='" + dateTo + '\'' +
+                ", totalPrice=" + totalPrice +
+                ", roomID=" + roomID +
+                '}';
     }
 }

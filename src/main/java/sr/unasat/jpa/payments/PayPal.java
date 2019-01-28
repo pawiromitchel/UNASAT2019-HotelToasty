@@ -1,7 +1,7 @@
 package sr.unasat.jpa.payments;
 
 public class PayPal extends Payment{
-    double fee = 5;
+    final double fee = 5;
 
     public PayPal() {
     }

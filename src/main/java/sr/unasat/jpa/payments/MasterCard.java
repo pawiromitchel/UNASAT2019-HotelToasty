@@ -1,7 +1,7 @@
 package sr.unasat.jpa.payments;
 
 public class MasterCard extends Payment {
-    double fee = 3;
+    final double fee = 3;
 
     public MasterCard() {
     }
